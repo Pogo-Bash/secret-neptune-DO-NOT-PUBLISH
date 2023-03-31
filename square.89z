@@ -1,0 +1,50 @@
+PROGRAM: BOXMOVE
+:ClrDraw    // Clear the screen
+:AxesOff    // Turn off the axes
+:GridOff    // Turn off the grid
+
+// Set initial values
+:X1:=50
+:Y1:=50
+:X2:=100
+:Y2:=100
+
+// Draw the box
+:Line(X1,Y1,X2,Y1)
+:Line(X2,Y1,X2,Y2)
+:Line(X2,Y2,X1,Y2)
+:Line(X1,Y2,X1,Y1)
+
+// Move the box
+:Repeat getKey=105
+    // Erase the old box
+    :Line(X1,Y1,X2,Y1,0)
+    :Line(X2,Y1,X2,Y2,0)
+    :Line(X2,Y2,X1,Y2,0)
+    :Line(X1,Y2,X1,Y1,0)
+
+    // Move the box
+    :If getKey=24 Then // Up arrow
+        :Y1:=Y1-5
+        :Y2:=Y2-5
+    :EndIf
+    :If getKey=25 Then // Down arrow
+        :Y1:=Y1+5
+        :Y2:=Y2+5
+    :EndIf
+    :If getKey=26 Then // Left arrow
+        :X1:=X1-5
+        :X2:=X2-5
+    :EndIf
+    :If getKey=27 Then // Right arrow
+        :X1:=X1+5
+        :X2:=X2+5
+    :EndIf
+
+    // Draw the new box
+    :Line(X1,Y1,X2,Y1)
+    :Line(X2,Y1,X2,Y2)
+    :Line(X2,Y2,X1,Y2)
+    :Line(X1,Y2,X1,Y1)
+:EndRepeat
+:EndPgm
