@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Page Title</title>
+  
+  <!-- Link to CSS stylesheet -->
+  <link rel="stylesheet" type="text/css" href="style.css">
+  
+  <!-- Link to JavaScript file -->
+  <script src="script.js"></script>
+  
+  <!-- Link to favicon -->
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+</head>
+<body>
+  <!-- Page content goes here -->
+</body>
+</html>
