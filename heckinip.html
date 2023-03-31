@@ -1,0 +1,24 @@
+<html>
+    <head>
+        <title>IP Address Information</title>
+    </head>
+    <body>
+        <h1>IP Address Information</h1>
+        <p>The IP address information for this page is:</p>
+        <ul>
+            <li>IP address: <span id="ip-address"></span></li>
+            <li>Hostname: <span id="hostname"></span></li>
+            <li>Location: <span id="location"></span></li>
+        </ul>
+        <script>
+            const url = 'https://wtfismyip.com/json';
+            fetch(url)
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('ip-address').innerHTML = "Your hecking " + data.YourFuckingIPAddress;
+                    document.getElementById('hostname').innerHTML = "Your hecking " + data.YourFuckingHostname;
+                    document.getElementById('location').innerHTML = "Your hecking " + data.YourFuckingLocation;
+                });
+        </script>
+    </body>
+</html>
