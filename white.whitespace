@@ -1,0 +1,18 @@
+  // Read input text and split it into words and phrases
+  PUSH 0    // Initialize an empty stack
+  READ     // Read input text and push it onto the stack
+  SPLIT    // Split the input text into words and phrases
+  REVERSE  // Reverse the order of the words and phrases on the stack
+
+  // Translate each word and phrase to ASL signs
+  LOOP:
+    DUP     // Duplicate the top item on the stack
+    JZ END  // If the stack is empty, exit the loop
+    TRANSLATE  // Translate the word or phrase to ASL signs
+    PRINT   // Print the ASL signs to the console
+    DROP    // Remove the translated word or phrase from the stack
+    JMP LOOP  // Jump back to the beginning of the loop
+
+  // End of program
+  END:
+    EXIT
