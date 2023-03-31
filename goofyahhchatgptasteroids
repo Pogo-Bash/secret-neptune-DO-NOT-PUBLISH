@@ -1,0 +1,87 @@
+import pygame
+import random
+
+# initialize pygame and create window
+pygame.init()
+screen = pygame.display.set_mode((800, 600))
+pygame.display.set_caption("Coin Collector")
+
+# load and scale images
+player_img = pygame.image.load('player.png')
+coin_img = pygame.image.load('coin.png')
+enemy_img = pygame.image.load('enemy.png')
+player_img = pygame.transform.scale(player_img, (50, 50))
+coin_img = pygame.transform.scale(coin_img, (50, 50))
+enemy_img = pygame.transform.scale(enemy_img, (50, 50))
+
+# create player, coin, and enemy objects
+class Player:
+    def __init__(self, x, y, speed):
+        self.x = x
+        self.y = y
+        self.speed = speed
+        
+    def move_left(self):
+        self.x -= self.speed
+    
+    def move_right(self):
+        self.x += self.speed
+        
+    def move_up(self):
+        self.y -= self.speed
+        
+    def move_down(self):
+        self.y += self.speed
+        
+    def draw(self, screen):
+        screen.blit(player_img, (self.x, self.y))
+
+class Coin:
+    def __init__(self, x, y):
+        self.x = x
+        self.y = y
+        
+    def draw(self, screen):
+        screen.blit(coin_img, (self.x, self.y))
+
+class Enemy:
+    def __init__(self, x, y, speed):
+        self.x = x
+        self.y = y
+        self.speed = speed
+        
+    def move(self):
+        self.y += self.speed
+        
+    def draw(self, screen):
+        screen.blit(enemy_img, (self.x, self.y))
+
+# initialize objects and set game variables
+player = Player(375, 500, 5)
+coins = []
+enemies = []
+score = 0
+
+# game loop
+running = True
+while running:
+    # check for events (i.e. key press)
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            running = False
+        if event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_LEFT:
+                player.move_left()
+            if event.key == pygame.K_RIGHT:
+                player.move_right()
+            if event.key == pygame.K_UP:
+                player.move_up()
+            if event.key == pygame.K_DOWN:
+                player.move_down()
+    
+    # add new coin and enemy every 100 frames
+    if len(coins) < 10:
+        x = random.randint(0, 750)
+        y = random.randint(0, 550)
+        coins.append(Coin(x, y))
+   
